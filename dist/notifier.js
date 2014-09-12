@@ -724,7 +724,7 @@ printStackTrace.implementation.prototype = {
             }
             
             return function (error) {
-                var xml = escape(this.generateXML(error)),
+                var xml = this.generateXML(error),
                     url = 'http://' + this.options.host + '/notifier_api/v2/notices';
                 
                 switch (Config.options['requestType']) {
