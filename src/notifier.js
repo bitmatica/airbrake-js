@@ -314,7 +314,7 @@
                         _sendPOSTRequest(url, xml);
                         break;
                     
-                    default:
+                    case 'GET':
                         _sendGETRequest(url, xml);
                 }
             };
