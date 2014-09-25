@@ -725,7 +725,7 @@ printStackTrace.implementation.prototype = {
             
             return function (error) {
                 var xml = this.generateXML(error),
-                    url = 'http://' + this.options.host + '/notifier_api/v2/notices';
+                    url = '//' + this.options.host + '/notifier_api/v2/notices';
                 
                 switch (Config.options['requestType']) {
                     case 'POST':
@@ -860,15 +860,17 @@ printStackTrace.implementation.prototype = {
         }
     };
 
-    window.onerror = function (message, file, line) {
-        setTimeout(function () {
-            new Notifier().notify({
-                message: message,
-                stack: '()@' + file + ':' + line
-            });
-        }, 0);
+    if (!window.NoAirbrake) {
+      window.onerror = function (message, file, line) {
+          setTimeout(function () {
+              new Notifier().notify({
+                  message: message,
+                  stack: '()@' + file + ':' + line
+              });
+          }, 0);
 
-        return true;
-    };
+          return true;
+      };
+    }
 })();
 })(window, document);

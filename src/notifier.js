@@ -307,7 +307,7 @@
             
             return function (error) {
                 var xml = this.generateXML(error),
-                    url = 'http://' + this.options.host + '/notifier_api/v2/notices';
+                    url = '//' + this.options.host + '/notifier_api/v2/notices';
                 
                 switch (Config.options['requestType']) {
                     case 'POST':
