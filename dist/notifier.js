@@ -859,18 +859,5 @@ printStackTrace.implementation.prototype = {
             return result;
         }
     };
-
-    if (!window.NoAirbrake) {
-      window.onerror = function (message, file, line) {
-          setTimeout(function () {
-              new Notifier().notify({
-                  message: message,
-                  stack: '()@' + file + ':' + line
-              });
-          }, 0);
-
-          return true;
-      };
-    }
 })();
 })(window, document);
